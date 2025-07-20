@@ -69,26 +69,67 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-secondary">
-            Натуральный мёд
-            <br />
-            <span className="text-primary">с нашей пасеки</span>
-          </h2>
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Собираем мёд в экологически чистых районах Алтайского края. 
-            Доставляем свежий урожай прямо к вашему столу.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8">
-              <Icon name="Truck" size={20} className="mr-2" />
-              Заказать доставку
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8">
-              <Icon name="Phone" size={20} className="mr-2" />
-              Связаться с нами
-            </Button>
+      <section className="relative py-32 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/img/70752c60-e608-416e-a424-a2de252bd7a8.jpg')`,
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-secondary/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/80"></div>
+        </div>
+        
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 animate-pulse">
+          <Icon name="Hexagon" className="text-primary/30" size={40} />
+        </div>
+        <div className="absolute top-40 right-20 animate-pulse delay-1000">
+          <Icon name="Hexagon" className="text-primary/20" size={32} />
+        </div>
+        <div className="absolute bottom-32 left-1/4 animate-pulse delay-500">
+          <Icon name="Hexagon" className="text-primary/25" size={24} />
+        </div>
+        
+        {/* Content */}
+        <div className="relative container mx-auto px-4 text-center">
+          <div className="animate-fade-in">
+            <h2 className="text-6xl md:text-7xl font-bold mb-8 text-secondary drop-shadow-lg">
+              Натуральный мёд
+              <br />
+              <span className="text-primary drop-shadow-md">с нашей пасеки</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-secondary/90 mb-12 max-w-3xl mx-auto drop-shadow-sm font-medium">
+              Собираем мёд в экологически чистых районах Алтайского края. 
+              Доставляем свежий урожай прямо к вашему столу.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="text-lg px-10 py-6 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <Icon name="Truck" size={24} className="mr-3" />
+                Заказать доставку
+              </Button>
+              <Button variant="outline" size="lg" className="text-lg px-10 py-6 bg-white/90 hover:bg-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2">
+                <Icon name="Phone" size={24} className="mr-3" />
+                Связаться с нами
+              </Button>
+            </div>
+          </div>
+          
+          {/* Stats */}
+          <div className="grid md:grid-cols-3 gap-8 mt-20 animate-fade-in">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-3xl font-bold text-primary mb-2">15+</div>
+              <div className="text-secondary font-medium">лет опыта</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-3xl font-bold text-primary mb-2">100%</div>
+              <div className="text-secondary font-medium">натуральный мёд</div>
+            </div>
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+              <div className="text-3xl font-bold text-primary mb-2">500+</div>
+              <div className="text-secondary font-medium">довольных клиентов</div>
+            </div>
           </div>
         </div>
       </section>

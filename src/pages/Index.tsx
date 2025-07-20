@@ -4,42 +4,56 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 
 const Index = () => {
-  const honeyTypes = [
+  const beehives = [
     {
-      name: "Цветочный мёд",
-      price: "850 ₽",
-      image: "/img/55dfd70e-032a-4b8c-b0c7-fd40d7653596.jpg",
-      description: "Светлый ароматный мёд с разнотравья",
-      weight: "500г"
+      name: "Улей Дадан-Блатт",
+      price: "5500 ₽",
+      image: "/img/5345ffd5-d2b6-4c16-bffb-f26bf3fad6a6.jpg",
+      description: "Профессиональный 12-рамочный улей из кедра",
+      features: ["12 рамок", "Кедр", "Вентиляция"]
     },
     {
-      name: "Липовый мёд",
-      price: "950 ₽",
-      image: "/img/55dfd70e-032a-4b8c-b0c7-fd40d7653596.jpg",
-      description: "Целебный мёд с насыщенным вкусом",
-      weight: "500г"
+      name: "Улей Лангстрота",
+      price: "6200 ₽",
+      image: "/img/5345ffd5-d2b6-4c16-bffb-f26bf3fad6a6.jpg",
+      description: "Современный улей с наблюдательным окном",
+      features: ["10 рамок", "Сосна", "Окно обзора"]
     },
     {
-      name: "Гречишный мёд",
-      price: "1050 ₽",
-      image: "/img/55dfd70e-032a-4b8c-b0c7-fd40d7653596.jpg",
-      description: "Тёмный мёд с высоким содержанием железа",
-      weight: "500г"
+      name: "Улей Варре",
+      price: "4800 ₽",
+      image: "/img/5345ffd5-d2b6-4c16-bffb-f26bf3fad6a6.jpg",
+      description: "Экологичный улей для естественного пчеловодства",
+      features: ["8 рамок", "Липа", "Экологичный"]
     }
   ];
 
-  const equipment = [
+  const mountainHoney = [
     {
-      name: "Улей-дадан 12-рамочный",
-      price: "4500 ₽",
-      image: "/img/b29e090a-b508-4e69-a5e2-504bf9651606.jpg",
-      description: "Классический улей из сосны"
+      weight: "0,2 кг",
+      price: "680 ₽",
+      image: "/img/a6051edf-0b91-4845-8562-6cca92745967.jpg",
+      originalPrice: "750 ₽"
     },
     {
-      name: "Медогонка 3-рамочная",
-      price: "8900 ₽",
-      image: "/img/b29e090a-b508-4e69-a5e2-504bf9651606.jpg",
-      description: "Нержавеющая сталь, для начинающих"
+      weight: "0,5 кг",
+      price: "1450 ₽",
+      image: "/img/cdbab95d-2092-49cc-b30e-d75b33560890.jpg",
+      originalPrice: "1600 ₽",
+      popular: true
+    },
+    {
+      weight: "0,8 кг",
+      price: "2100 ₽",
+      image: "/img/e9a8de44-cb19-4002-8420-c25335cce363.jpg",
+      originalPrice: "2300 ₽"
+    },
+    {
+      weight: "1 кг",
+      price: "2580 ₽",
+      image: "/img/a3606d2c-2ccb-4e15-a32a-48dcb8922a82.jpg",
+      originalPrice: "2800 ₽",
+      discount: "Выгодно!"
     }
   ];
 
@@ -163,36 +177,45 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Honey Catalog */}
-      <section id="catalog" className="py-20">
+      {/* Beehives Section */}
+      <section className="py-20 bg-gradient-to-b from-background to-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Сорта мёда</h2>
-            <p className="text-xl text-muted-foreground">Выберите свой любимый вкус природы</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Профессиональные ульи</h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Качественные ульи из натурального дерева для успешного пчеловодства
+            </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
-            {honeyTypes.map((honey, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="aspect-square overflow-hidden">
+            {beehives.map((hive, index) => (
+              <Card key={index} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-white/90 backdrop-blur-sm">
+                <div className="aspect-[4/3] overflow-hidden bg-gradient-to-br from-muted/20 to-muted/40 relative">
                   <img 
-                    src={honey.image} 
-                    alt={honey.name}
-                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                    src={hive.image} 
+                    alt={hive.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl">{honey.name}</CardTitle>
-                    <Badge variant="secondary">{honey.weight}</Badge>
+                <CardHeader className="pb-4">
+                  <CardTitle className="text-2xl group-hover:text-primary transition-colors">{hive.name}</CardTitle>
+                  <CardDescription className="text-base">{hive.description}</CardDescription>
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {hive.features.map((feature, i) => (
+                      <Badge key={i} variant="outline" className="text-xs font-medium">
+                        {feature}
+                      </Badge>
+                    ))}
                   </div>
-                  <CardDescription>{honey.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="pt-0">
                   <div className="flex justify-between items-center">
-                    <span className="text-2xl font-bold text-primary">{honey.price}</span>
-                    <Button>
-                      <Icon name="Plus" size={16} className="mr-2" />
-                      В корзину
+                    <div>
+                      <span className="text-3xl font-bold text-primary">{hive.price}</span>
+                    </div>
+                    <Button size="lg" className="shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                      <Icon name="ShoppingCart" size={18} className="mr-2" />
+                      Заказать
                     </Button>
                   </div>
                 </CardContent>
@@ -202,42 +225,109 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Equipment Section */}
-      <section id="equipment" className="py-20 bg-muted/30">
+      {/* Mountain Honey Section */}
+      <section id="catalog" className="py-24 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Пчеловодческое оборудование</h2>
-            <p className="text-xl text-muted-foreground">Всё необходимое для пасеки</p>
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-3 bg-primary/10 rounded-full px-6 py-3 mb-8">
+              <Icon name="Mountain" className="text-primary" size={24} />
+              <span className="text-primary font-semibold">Премиум качество</span>
+            </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Мёд горный
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Собранный на высоте 1500 метров в экологически чистых районах Алтая. 
+              Уникальный состав альпийских трав придаёт особый вкус и целебные свойства.
+            </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {equipment.map((item, index) => (
-              <Card key={index} className="overflow-hidden">
-                <div className="md:flex">
-                  <div className="md:w-1/2 aspect-square md:aspect-auto overflow-hidden">
-                    <img 
-                      src={item.image} 
-                      alt={item.name}
-                      className="w-full h-full object-cover"
-                    />
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {mountainHoney.map((honey, index) => (
+              <Card key={index} className={`group relative overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/95 backdrop-blur-sm ${honey.popular ? 'ring-2 ring-primary scale-105' : ''}`}>
+                {honey.popular && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-primary text-white font-semibold px-3 py-1">
+                      Популярный
+                    </Badge>
                   </div>
-                  <div className="md:w-1/2 p-6 flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-3">{item.name}</h3>
-                      <p className="text-muted-foreground mb-4">{item.description}</p>
-                    </div>
-                    <div>
-                      <div className="text-3xl font-bold text-primary mb-4">{item.price}</div>
-                      <Button size="lg" className="w-full">
-                        Заказать
-                      </Button>
-                    </div>
+                )}
+                {honey.discount && (
+                  <div className="absolute top-4 left-4 z-10">
+                    <Badge variant="destructive" className="font-semibold px-3 py-1">
+                      {honey.discount}
+                    </Badge>
                   </div>
+                )}
+                
+                <div className="aspect-square overflow-hidden bg-gradient-to-br from-primary/5 to-secondary/5 relative">
+                  <img 
+                    src={honey.image} 
+                    alt={`Мёд горный ${honey.weight}`}
+                    className="w-full h-full object-cover p-8 group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
+                
+                <CardHeader className="text-center pb-4">
+                  <div className="mb-3">
+                    <div className="text-2xl font-bold text-secondary mb-1">Мёд горный</div>
+                    <div className="text-xl font-semibold text-primary">{honey.weight}</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-center gap-3">
+                      <span className="text-3xl font-bold text-primary">{honey.price}</span>
+                      {honey.originalPrice && (
+                        <span className="text-lg text-muted-foreground line-through">{honey.originalPrice}</span>
+                      )}
+                    </div>
+                    {honey.originalPrice && (
+                      <div className="text-sm text-green-600 font-medium">
+                        Скидка {Math.round(((parseInt(honey.originalPrice) - parseInt(honey.price)) / parseInt(honey.originalPrice)) * 100)}%
+                      </div>
+                    )}
+                  </div>
+                </CardHeader>
+                
+                <CardContent className="pt-0">
+                  <Button 
+                    size="lg" 
+                    className="w-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-base font-semibold"
+                  >
+                    <Icon name="Plus" size={18} className="mr-2" />
+                    В корзину
+                  </Button>
+                  <div className="mt-4 pt-4 border-t border-muted/20">
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <Icon name="Truck" size={16} />
+                      <span>Бесплатная доставка от 3000 ₽</span>
+                    </div>
+                  </div>
+                </CardContent>
               </Card>
             ))}
           </div>
+          
+          <div className="mt-16 text-center">
+            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <div className="flex items-center justify-center gap-3 p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
+                <Icon name="Award" className="text-primary" size={24} />
+                <span className="font-semibold">Сертифицировано</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
+                <Icon name="Leaf" className="text-primary" size={24} />
+                <span className="font-semibold">100% натуральный</span>
+              </div>
+              <div className="flex items-center justify-center gap-3 p-6 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg">
+                <Icon name="Heart" className="text-primary" size={24} />
+                <span className="font-semibold">Полезно для здоровья</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+
 
       {/* Delivery Section */}
       <section id="delivery" className="py-20">
